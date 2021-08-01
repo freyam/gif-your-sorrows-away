@@ -24,9 +24,9 @@ function tenorCallback_search(responsetext) {
   gifs = response_objects["results"];
 
   var idx = Math.floor(Math.random() * gifs.length);
+  var gif_url = gifs[idx]["media"][0]["gif"]["url"];
 
-  document.getElementById("gif_display").src =
-    gifs[idx]["media"][0]["gif"]["url"];
+  document.getElementById("gif_display").src = gif_url;
   return;
 }
 
@@ -69,14 +69,12 @@ function grab_data() {
     "red panda",
     "panda bear",
     "guinea pig",
-    "munchkin kitten",
     "deer",
     "cute chicken",
     "giraffe",
     "penguin",
     "hummingbird",
     "butterfly",
-    "sparrow",
     "owl",
     "san francisco garter",
     "kitten paw",
