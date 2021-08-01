@@ -33,7 +33,7 @@ function tenorCallback_search(responsetext) {
 function grab_data() {
   var apikey = "ABOEVPLHCZH1";
 
-  var prefixes = ["adorable", "sleeping", "happy", "smile", "smol"];
+  var prefixes = ["cute", "sleeping", "smol"];
 
   var animals = [
     "animals",
@@ -83,7 +83,6 @@ function grab_data() {
   ];
 
   var search_term =
-    "cute" +
     prefixes[Math.floor(Math.random() * prefixes.length)] +
     animals[Math.floor(Math.random() * animals.length)];
 
