@@ -33,16 +33,7 @@ function tenorCallback_search(responsetext) {
 function grab_data() {
   var apikey = "ABOEVPLHCZH1";
 
-  var prefixes = [
-    "adorable",
-    "sleeping",
-    "happy",
-    "dance",
-    "funny",
-    "smile",
-    "smol",
-    "petting",
-  ];
+  var prefixes = ["adorable", "sleeping", "happy", "smile", "smol"];
 
   var animals = [
     "animals",
@@ -77,26 +68,18 @@ function grab_data() {
     "hamster",
     "red panda",
     "panda bear",
-    "chipmunk",
     "guinea pig",
     "munchkin kitten",
-    "poodle",
-    "otter",
     "deer",
     "cute chicken",
     "giraffe",
     "penguin",
-    "bird",
     "hummingbird",
     "butterfly",
     "sparrow",
     "owl",
     "san francisco garter",
-    "floof",
     "kitten paw",
-    "kitten milk",
-    "teddy bears",
-    "cat sunglasses",
   ];
 
   var search_term =
