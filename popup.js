@@ -84,6 +84,7 @@ function grab_data() {
 
   var search_term =
     prefixes[Math.floor(Math.random() * prefixes.length)] +
+    " " +
     animals[Math.floor(Math.random() * animals.length)];
 
   var search_url =
