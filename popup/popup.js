@@ -33,7 +33,7 @@ function tenorCallback_search(responsetext) {
 function grab_data() {
   var apikey = "ABOEVPLHCZH1";
 
-  var prefixes = ["cute", "sleeping", "smol"];
+  var prefixes = ["", "cute", "sleeping", "smol"];
 
   var animals = [
     "animals",
@@ -49,11 +49,8 @@ function grab_data() {
     "llama",
     "alpaca",
     "pig",
-    "piggy",
-    "piglet",
     "dog hug",
     "doggo",
-    "cat hug",
     "catto",
     "squirrel",
     "fox",
@@ -64,29 +61,26 @@ function grab_data() {
     "snake",
     "quokka",
     "arctic foxes",
-    "fish",
     "hamster",
     "red panda",
     "panda bear",
     "guinea pig",
     "deer",
-    "cute chicken",
     "giraffe",
     "penguin",
     "hummingbird",
     "butterfly",
     "owl",
-    "san francisco garter",
     "kitten paw",
   ];
 
-  var search_term =
+  var search_query =
     prefixes[Math.floor(Math.random() * prefixes.length)] +
     " " +
     animals[Math.floor(Math.random() * animals.length)];
 
   var search_url =
-    "https://g.tenor.com/v1/search?q=" + search_term + "&key=" + apikey;
+    "https://g.tenor.com/v1/search?q=" + search_query + "&key=" + apikey;
 
   httpGetAsync(search_url, tenorCallback_search);
 
