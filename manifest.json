@@ -10,20 +10,20 @@
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": {
-      "16": "/images/logo16.png",
-      "32": "/images/logo32.png",
-      "48": "/images/logo48.png",
-      "64": "/images/logo64.png",
-      "192": "/images/logo192.png",
-      "512": "/images/logo512.png"
+      "16": "images/logo16.png",
+      "32": "images/logo32.png",
+      "48": "images/logo48.png",
+      "64": "images/logo64.png",
+      "192": "images/logo192.png",
+      "512": "images/logo512.png"
     }
   },
   "icons": {
-    "16": "/images/logo16.png",
-    "32": "/images/logo32.png",
-    "48": "/images/logo48.png",
-    "64": "/images/logo64.png",
-    "192": "/images/logo192.png",
-    "512": "/images/logo512.png"
+    "16": "images/logo16.png",
+    "32": "images/logo32.png",
+    "48": "images/logo48.png",
+    "64": "images/logo64.png",
+    "192": "images/logo192.png",
+    "512": "images/logo512.png"
   }
 }
