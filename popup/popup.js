@@ -16,7 +16,7 @@ function httpGetAsync(theUrl, callback) {
 
 setTimeout(function () {
   document.getElementById("banner").style.display = "none";
-}, 1000);
+}, 750);
 
 function tenorCallback_search(responsetext) {
   var response_objects = JSON.parse(responsetext);
@@ -30,54 +30,63 @@ function tenorCallback_search(responsetext) {
   return;
 }
 
+var presets = [
+  {
+    name: "Animals",
+    queries: [
+      "cute animals",
+      "cute kitten",
+      "sleeping kitten",
+      "smol kitten",
+      "cute puppy",
+      "cute sleeping puppy",
+      "cute cat",
+      "cute dog",
+      "cute rabbit",
+      "cute bunny",
+      "cute panda",
+      "cute koala",
+      "cute polar bear",
+      "cute llama",
+      "cute alpaca",
+      "cute pig",
+      "cute dog hug",
+      "cute doggo",
+      "cute catto",
+      "cute squirrel",
+      "cute fox",
+      "cute golden retriever",
+      "cute samoyed",
+      "cute sand cat",
+      "cute raccoon",
+      "cute snake",
+      "cute quokka",
+      "cute arctic foxes",
+      "cute hamster",
+      "cute red panda",
+      "cute panda bear",
+      "cute guinea pig",
+      "cute deer",
+      "cute giraffe",
+      "cute penguin",
+      "cute hummingbird",
+      "cute butterfly",
+      "cute owl",
+      "cute kitten paw",
+    ],
+    show: true,
+  },
+];
+
 function grab_data() {
   var apikey = "ABOEVPLHCZH1";
 
-  var prefixes = ["", "cute", "sleeping", "smol"];
+  var queries = [];
 
-  var animals = [
-    "animals",
-    "kitten",
-    "puppy",
-    "cat",
-    "dog",
-    "rabbit",
-    "bunny",
-    "panda",
-    "koala",
-    "polar bear",
-    "llama",
-    "alpaca",
-    "pig",
-    "dog hug",
-    "doggo",
-    "catto",
-    "squirrel",
-    "fox",
-    "golden retriever",
-    "samoyed",
-    "sand cat",
-    "raccoon",
-    "snake",
-    "quokka",
-    "arctic foxes",
-    "hamster",
-    "red panda",
-    "panda bear",
-    "guinea pig",
-    "deer",
-    "giraffe",
-    "penguin",
-    "hummingbird",
-    "butterfly",
-    "owl",
-    "kitten paw",
-  ];
+  for (var i = 0; i < presets.length; i++)
+    if (presets[i].show) queries = queries.concat(presets[i].queries);
 
-  var search_query =
-    prefixes[Math.floor(Math.random() * prefixes.length)] +
-    " " +
-    animals[Math.floor(Math.random() * animals.length)];
+  var search_query = queries[Math.floor(Math.random() * queries.length)];
 
   var search_url =
     "https://g.tenor.com/v1/search?q=" + search_query + "&key=" + apikey;

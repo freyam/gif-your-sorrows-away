@@ -1,11 +1,8 @@
 {
   "name": "GIF Your Sorrows Away",
   "description": "GIF Your Sorrows Away",
-  "version": "1.2",
+  "version": "2.0",
   "manifest_version": 3,
-  "background": {
-    "service_worker": "background.js"
-  },
   "options_page": "options/options.html",
   "action": {
     "default_popup": "popup/popup.html",
