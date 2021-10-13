@@ -7,10 +7,10 @@
     left: 0;
     overflow-x: hidden;
     padding-top: 20px;
-    
+
 
   }
-  
+
   .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -18,7 +18,7 @@
     color: #000000;
     display: block;
   }
-  
+
   .sidenav button {
     color: gray;
   }
@@ -26,8 +26,8 @@
   .sidenav button:hover{
     color: black;
   }
-  
-  
+
+
 /* css of boostrap card */
 body{
   font-family: 'Montserrat', sans-serif;
@@ -117,7 +117,7 @@ a{
   padding-left: 0.5%;
 }
 .head-right{
-  margin-left: auto; 
+  margin-left: auto;
   padding-right: 0.5%;
   float: right;
 }
@@ -178,7 +178,7 @@ a{
 .snip1467:hover img{
   webkit-filter: blur(4px); /* Chrome, Safari, Opera */
     filter: blur(4px);
-    
+
 }
 
 .snip1467 i {
@@ -192,7 +192,7 @@ a{
   background-color: #64a6bd;
   -webkit-transform: translateX(-55px);
   transform: translateX(-55px);
-  
+
 }
 
 .snip1467 a {
@@ -208,7 +208,7 @@ a{
   z-index: 10;
   -webkit-transform: translateX(0);
   transform: translateX(0);
-} 
+}
 
 .snip1467{
   width: 20%;
