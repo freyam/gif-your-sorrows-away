@@ -1,4 +1,6 @@
-function httpGetAsync(theUrl, callback) {
+document.getElementById("gif").style.display = "none";
+
+function httpGetAsync(URL, callback) {
     var xmlHttp = new XMLHttpRequest();
 
     xmlHttp.onreadystatechange = function () {
@@ -7,18 +9,13 @@ function httpGetAsync(theUrl, callback) {
         }
     };
 
-    xmlHttp.open("GET", theUrl, true);
-
+    xmlHttp.open("GET", URL, true);
     xmlHttp.send(null);
 
     return;
 }
 
-setTimeout(function () {
-    document.getElementById("banner").style.display = "none";
-}, 750);
-
-function tenorCallback_search(responsetext) {
+function tenor(responsetext) {
     var response_objects = JSON.parse(responsetext);
 
     gifs = response_objects["results"];
@@ -26,74 +23,75 @@ function tenorCallback_search(responsetext) {
     var idx = Math.floor(Math.random() * gifs.length);
     var gif_url = gifs[idx]["media"][0]["gif"]["url"];
 
-    document.getElementById("gif_display").src = gif_url;
-    return;
+    document.getElementById("gif").src = gif_url;
+    document.getElementById("link").href = gif_url;
+
+    document.getElementById("gif").style.display = "block";
+
+    document.getElementById("similar").onclick = function () {
+        idx = Math.floor(Math.random() * gifs.length);
+        gif_url = gifs[idx]["media"][0]["gif"]["url"];
+
+        document.getElementById("gif").src = gif_url;
+        document.getElementById("link").href = gif_url;
+    };
 }
 
-var presets = [
-    {
-        name: "Animals",
-        queries: [
-            "cute animals",
-            "cute kitten",
-            "sleeping kitten",
-            "smol kitten",
-            "cute puppy",
-            "cute sleeping puppy",
-            "cute cat",
-            "cute dog",
-            "cute rabbit",
-            "cute bunny",
-            "cute panda",
-            "cute koala",
-            "cute polar bear",
-            "cute llama",
-            "cute alpaca",
-            "cute pig",
-            "cute dog hug",
-            "cute doggo",
-            "cute catto",
-            "cute squirrel",
-            "cute fox",
-            "cute golden retriever",
-            "cute samoyed",
-            "cute sand cat",
-            "cute raccoon",
-            "cute snake",
-            "cute quokka",
-            "cute arctic foxes",
-            "cute hamster",
-            "cute red panda",
-            "cute panda bear",
-            "cute guinea pig",
-            "cute deer",
-            "cute giraffe",
-            "cute penguin",
-            "cute hummingbird",
-            "cute butterfly",
-            "cute owl",
-            "cute kitten paw",
-        ],
-        show: true,
-    },
+var QUERIES = [
+    "cute animals",
+    "cute kitten",
+    "sleeping kitten",
+    "smol kitten",
+    "cute puppy",
+    "cute sleeping puppy",
+    "cute cat",
+    "cute dog",
+    "cute rabbit",
+    "cute bunny",
+    "cute panda",
+    "cute koala",
+    "cute polar bear",
+    "cute llama",
+    "cute alpaca",
+    "cute pig",
+    "cute dog hug",
+    "cute doggo",
+    "cute catto",
+    "cute squirrel",
+    "cute fox",
+    "cute golden retriever",
+    "cute samoyed",
+    "cute sand cat",
+    "cute raccoon",
+    "cute snake",
+    "cute quokka",
+    "cute arctic foxes",
+    "cute hamster",
+    "cute red panda",
+    "cute panda bear",
+    "cute guinea pig",
+    "cute deer",
+    "cute giraffe",
+    "cute penguin",
+    "cute hummingbird",
+    "cute butterfly",
+    "cute owl",
+    "cute kitten paw",
 ];
 
-function grab_data() {
-    var apikey = "ABOEVPLHCZH1";
+function showGIF() {
+    var API_KEY = "ABOEVPLHCZH1";
 
-    var queries = [];
+    var SEARCH_QUERY = QUERIES[Math.floor(Math.random() * QUERIES.length)];
 
-    for (var i = 0; i < presets.length; i++)
-        if (presets[i].show) queries = queries.concat(presets[i].queries);
+    var SEARCH_URL =
+        "https://g.tenor.com/v1/search?q=" + SEARCH_QUERY + "&key=" + API_KEY;
 
-    var search_query = queries[Math.floor(Math.random() * queries.length)];
-
-    var search_url =
-        "https://g.tenor.com/v1/search?q=" + search_query + "&key=" + apikey;
-
-    httpGetAsync(search_url, tenorCallback_search);
-
-    return;
+    httpGetAsync(SEARCH_URL, tenor);
 }
 
-grab_data();
+setTimeout(function () {
+    document.getElementById("banner").style.display = "none";
+}, 500);
+
+showGIF();
