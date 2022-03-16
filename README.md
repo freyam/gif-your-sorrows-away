@@ -1,6 +1,6 @@
 # GIF Your Sorrows Away
 
-![https://chrome.google.com/webstore/detail/gif-your-sorrows-away/hepbomdbbmdmbdefdlkiadmapjclnfob](branding/chrome-web-store.png)
+[![](branding/chrome-web-store.png)][1]
 
 GYSA (GIF Your Sorrows Away) is a browser extension that displays adorable GIFs of cute animals on your screen at random.
 
@@ -10,3 +10,5 @@ GYSA (GIF Your Sorrows Away) is a browser extension that displays adorable GIFs 
 ![](branding/usecase.png)
 ![](branding/feature.png)
 ![](branding/marketing.png)
+
+[1]: https://chrome.google.com/webstore/detail/gif-your-sorrows-away/hepbomdbbmdmbdefdlkiadmapjclnfob
