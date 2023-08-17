@@ -1,19 +1,20 @@
 {
-    "name": "GIF Your Sorrows Away",
-    "description": "GYSA displays adorable animated GIFs that instantly make you feel better.",
-    "version": "0.1",
-    "manifest_version": 3,
-    "action": {
-        "default_popup": "popup/popup.html",
-        "default_icon": {
-            "16": "images/logo16.png",
-            "48": "images/logo48.png",
-            "128": "images/logo128.png"
-        }
-    },
-    "icons": {
-        "16": "images/logo16.png",
-        "48": "images/logo48.png",
-        "128": "images/logo128.png"
+  "name": "GIF Your Sorrows Away",
+  "description": "GYSA displays adorable animated GIFs that instantly make you feel better.",
+  "version": "0.2",
+  "manifest_version": 3,
+  "permissions": ["downloads"],
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "images/logo16.png",
+      "48": "images/logo48.png",
+      "128": "images/logo128.png"
     }
+  },
+  "icons": {
+    "16": "images/logo16.png",
+    "48": "images/logo48.png",
+    "128": "images/logo128.png"
+  }
 }

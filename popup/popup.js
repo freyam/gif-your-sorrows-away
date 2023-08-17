@@ -1,97 +1,99 @@
-document.getElementById("gif").style.display = "none";
+const prefixes = ["cute", "sleep", "laugh", "smile", "happy", "sad", "angry"];
 
-function httpGetAsync(URL, callback) {
-    var xmlHttp = new XMLHttpRequest();
-
-    xmlHttp.onreadystatechange = function () {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            callback(xmlHttp.responseText);
-        }
-    };
-
-    xmlHttp.open("GET", URL, true);
-    xmlHttp.send(null);
-
-    return;
-}
-
-function tenor(responsetext) {
-    var response_objects = JSON.parse(responsetext);
-
-    gifs = response_objects["results"];
-
-    var idx = Math.floor(Math.random() * gifs.length);
-    var gif_url = gifs[idx]["media"][0]["gif"]["url"];
-
-    document.getElementById("gif").src = gif_url;
-    document.getElementById("link").href = gif_url;
-
-    document.getElementById("gif").style.display = "block";
-
-    document.getElementById("similar").onclick = function () {
-        idx = Math.floor(Math.random() * gifs.length);
-        gif_url = gifs[idx]["media"][0]["gif"]["url"];
-
-        document.getElementById("gif").src = gif_url;
-        document.getElementById("link").href = gif_url;
-    };
-}
-
-var QUERIES = [
-    "cute animals",
-    "cute kitten",
-    "sleeping kitten",
-    "smol kitten",
-    "cute puppy",
-    "cute sleeping puppy",
-    "cute cat",
-    "cute dog",
-    "cute rabbit",
-    "cute bunny",
-    "cute panda",
-    "cute koala",
-    "cute polar bear",
-    "cute llama",
-    "cute alpaca",
-    "cute pig",
-    "cute dog hug",
-    "cute doggo",
-    "cute catto",
-    "cute squirrel",
-    "cute fox",
-    "cute golden retriever",
-    "cute samoyed",
-    "cute sand cat",
-    "cute raccoon",
-    "cute snake",
-    "cute quokka",
-    "cute arctic foxes",
-    "cute hamster",
-    "cute red panda",
-    "cute panda bear",
-    "cute guinea pig",
-    "cute deer",
-    "cute giraffe",
-    "cute penguin",
-    "cute hummingbird",
-    "cute butterfly",
-    "cute owl",
-    "cute kitten paw",
+const suffixes = [
+  "kitten",
+  "puppy",
+  "cat",
+  "dog",
+  "rabbit",
+  "bunny",
+  "panda",
+  "koala",
+  "polar bear",
+  "llama",
+  "alpaca",
+  "pig",
+  "doggo",
+  "catto",
+  "squirrel",
+  "golden retriever",
+  "samoyed",
+  "raccoon",
+  "arctic foxes",
+  "hamster",
+  "red panda",
+  "panda bear",
+  "guinea pig",
+  "deer",
+  "penguin",
+  "elephant",
+  "dolphin",
+  "hedgehog",
+  "swan",
+  "chick",
 ];
 
-function showGIF() {
-    var API_KEY = "ABOEVPLHCZH1";
-
-    var SEARCH_QUERY = QUERIES[Math.floor(Math.random() * QUERIES.length)];
-
-    var SEARCH_URL =
-        "https://g.tenor.com/v1/search?q=" + SEARCH_QUERY + "&key=" + API_KEY;
-
-    httpGetAsync(SEARCH_URL, tenor);
+const QUERIES = [];
+for (const prefix of prefixes) {
+  for (const suffix of suffixes) {
+    QUERIES.push(`${prefix} ${suffix}`);
+  }
 }
 
-setTimeout(function () {
-    document.getElementById("banner").style.display = "none";
-}, 500);
+const API_KEY = "ABOEVPLHCZH1";
 
-showGIF();
+const gifElement = document.getElementById("gif");
+const similarButton = document.getElementById("similar");
+const downloadButton = document.getElementById("download");
+const newButton = document.getElementById("new");
+
+let gifs = [];
+let query = "";
+
+async function fetchGifs() {
+  query = QUERIES[Math.floor(Math.random() * QUERIES.length)];
+  const uri = `https://g.tenor.com/v1/search?q=${query}&key=${API_KEY}`;
+
+  try {
+    const response = await fetch(uri);
+    const data = await response.json();
+    gifs = data.results;
+  } catch (error) {
+    console.error("Error fetching gifs:", error);
+    gifs = [];
+  }
+}
+
+function displayRandomGIF() {
+  const randomIdx = Math.floor(Math.random() * gifs.length);
+  const gif = gifs[randomIdx];
+
+  const gifUrl = gif.media[0].mediumgif.url;
+
+  gifElement.src = gifUrl;
+  gifElement.style.display = "block";
+}
+
+function downloadGIF() {
+  chrome.downloads.download({
+    url: gifElement.src,
+    filename: query + ".gif",
+  });
+}
+
+async function GYSA() {
+  await fetchGifs();
+  displayRandomGIF();
+}
+
+similarButton.onclick = function () {
+  displayRandomGIF();
+};
+
+downloadButton.onclick = function () {
+  downloadGIF();
+};
+
+newButton.onclick = async function () {
+  GYSA();
+};

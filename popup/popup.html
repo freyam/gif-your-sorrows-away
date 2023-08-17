@@ -1,31 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/logo32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/logo16.png" />
-        <link rel="manifest" href="/site.webmanifest" />
-        <link rel="stylesheet" href="popup.css" />
-        <title>GIF Your Sorrows Away</title>
-    </head>
-    <body>
-        <div>
-            <img
-                id="banner"
-                src="../images/banner.gif"
-                style="width: 350px; height: 350px"
-            />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/logo32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/logo16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="stylesheet" href="popup.css" />
+    <title>GIF Your Sorrows Away</title>
+  </head>
+  <body>
+    <img id="gif" src="../images/banner.gif" />
 
-            <a id="link" target="_blank" download>
-                <img id="gif" />
-            </a>
-            <p>
-                <span id="query"></span>
-                <button id="similar">Similar</button>
-            </p>
-        </div>
-        <script src="popup.js"></script>
-    </body>
+    <div id="buttons">
+      <button id="similar">Similar</button>
+      <button id="download">Download</button>
+      <button id="new">New</button>
+    </div>
+    <script src="popup.js"></script>
+  </body>
 </html>
